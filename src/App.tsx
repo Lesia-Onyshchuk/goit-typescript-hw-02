@@ -11,6 +11,11 @@ import Modal from "react-modal";
 import toast from "react-hot-toast";
 import { Picture } from "./components/ImageGallery/ImageGallery.types";
 
+interface Response {
+  results: Picture[];
+  total_pages: number;
+}
+
 function App() {
   const [pictures, setPictures] = useState<Picture[]>([]);
   const [error, setError] = useState<boolean>(false);
@@ -44,7 +49,7 @@ function App() {
       try {
         setError(false);
         setLoading(true);
-        const response = await axios.get(
+        const response = await axios.get<Response>(
           "https://api.unsplash.com/search/photos",
           {
             params: {
