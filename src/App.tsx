@@ -9,22 +9,23 @@ import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import ImageModal from "./components/ImageModal/ImageModal";
 import Modal from "react-modal";
 import toast from "react-hot-toast";
+import { Picture } from "./components/ImageGallery/ImageGallery.types";
 
 function App() {
-  const [pictures, setPictures] = useState([]);
-  const [error, setError] = useState(false);
-  const [topic, setTopic] = useState();
-  const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [totalPages, setTotalPages] = useState();
+  const [pictures, setPictures] = useState<Picture[]>([]);
+  const [error, setError] = useState<boolean>(false);
+  const [topic, setTopic] = useState<string | undefined>();
+  const [loading, setLoading] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [modalIsOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Picture | null>(null);
+  const [totalPages, setTotalPages] = useState<number | undefined>();
 
   useEffect(() => {
     Modal.setAppElement("#root");
   }, []);
 
-  function openModal(image) {
+  function openModal(image: Picture) {
     setSelectedImage(image);
     setIsOpen(true);
   }
@@ -39,7 +40,7 @@ function App() {
   }
 
   useEffect(() => {
-    async function fetchPictures(topic, page) {
+    async function fetchPictures(topic: string, page: number) {
       try {
         setError(false);
         setLoading(true);

@@ -1,6 +1,7 @@
+import { Props } from "./ImageCard.types";
 import css from "./ImageCard.module.css";
 
-export default function ImageCard({ picture, onClick }) {
+export default function ImageCard({ picture, onClick }: Props) {
   return (
     <div>
       <img
