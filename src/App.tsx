@@ -19,7 +19,7 @@ function App() {
   const [page, setPage] = useState<number>(1);
   const [modalIsOpen, setIsOpen] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<Picture | null>(null);
-  const [totalPages, setTotalPages] = useState<number | undefined>();
+  const [totalPages, setTotalPages] = useState<number>(0);
 
   useEffect(() => {
     Modal.setAppElement("#root");
